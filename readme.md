@@ -21,12 +21,6 @@ To install the `inf-load` component, you can use npm:
 npm install inf-load
 ```
 
-Or include it directly in your HTML:
-
-```html
-<script src="path/to/inf-load.js"></script>
-```
-
 ## Usage
 
 Here's a simple example of how to use the `inf-load` component:
@@ -37,12 +31,31 @@ Here's a simple example of how to use the `inf-load` component:
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Infinite Loading Example</title>
-    <script src="path/to/inf-load.js"></script>
+    <title>Infinte Loading</title>
+
   </head>
+  <script>
+    let page = 1;
+    const limit = 10;
+    const url = `https://jsonplaceholder.typicode.com/posts`;
+    const onFetch = async (fn, more) => {
+      if(more) page++
+      const paramMap = new Map()
+      paramMap.set("_page", page)
+      paramMap.set("_limit", limit)
+      fn(url, paramMap).then((res) => {
+        console.log(res);
+      });
+    };
+    window.onFetch = onFetch;
+  </script>
   <body>
-   <infinite-loading fetch="onFetch">
+    <div class="container p-5">
+      <infinite-loading fetch="onFetch">
         <template>
+          <style>
+            @import url("https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css");
+          </style>
           <div class="card mb-3">
             <div class="card-body">
               <h4 class="card-title" data-inf-load-key="title"></h4>
@@ -51,8 +64,22 @@ Here's a simple example of how to use the `inf-load` component:
           </div>
         </template><!-- Loading template -->
       </infinte-loading>
+    </div>
+    <script type="module" src="./src/index.ts"></script>
   </body>
 </html>
+```
+
+```javascript
+import "inf-load";
+
+// Track element in the DOM
+document.addEventListener("DOMContentLoaded", () => {
+  console.log(
+    "Checking for element:",
+    document.querySelector("infinite-loading")
+  );
+});
 ```
 
 ## Built With
