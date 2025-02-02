@@ -1,6 +1,6 @@
 # Project Title
 
-inf-load
+inf-load (`<infinite-loading>`) : Web component for Infinite loading feature
 
 ## Introduction
 
