@@ -1,0 +1,22 @@
+{
+  "name": "inf-load",
+  "version": "1.0.0",
+  "main": "dist/inf-load.cjs.js",
+  "module": "dist/inf-load.es.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "./node_modules/.bin/vite",
+    "build": "./node_modules/.bin/vite build && tsc --emitDeclarationOnly",
+    "build:watch": "./node_modules/.bin/vite build --watch"
+  },
+  "author": "Vishnuprasad Oduvathody",
+  "license": "ISC",
+  "description": "webcomponent for infinite loading",
+  "devDependencies": {
+    "@types/node": "^22.13.0",
+    "typescript": "^5.7.3",
+    "vite": "^6.0.11"
+  }
+}
