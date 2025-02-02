@@ -1,10 +1,12 @@
 # Ignore node_modules folder
 node_modules/
+example/node_modules/
+
 
 # Ignore build output
 dist/
 build/
-example/
+example/dist/
 
 # Ignore logs
 logs/

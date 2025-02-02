@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Infinte Loading</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  </head>
+  <script>
+    let page = 1;
+    const limit = 10;
+    const url = `https://jsonplaceholder.typicode.com/posts`;
+    const onFetch = async (fn, more) => {
+      if(more) page++
+      const paramMap = new Map()
+      paramMap.set("_page", page)
+      paramMap.set("_limit", limit)
+      fn(url, paramMap).then((res) => {
+        console.log(res);
+      });
+    };
+    window.onFetch = onFetch;
+  </script>
+  <body>
+    <div class="container p-5">
+      <infinite-loading fetch="onFetch">
+        <template>
+          <style>
+            @import url("https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css");
+          </style>
+          <div class="card mb-3">
+            <div class="card-body">
+              <h4 class="card-title" data-inf-load-key="title"></h4>
+              <p class="card-text" data-inf-load-key="body"></p>
+            </div>
+          </div>
+        </template><!-- Loading template -->
+      </infinte-loading>
+    </div>
+    <script type="module" src="./src/index.ts"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  </body>
+</html>
