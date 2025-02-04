@@ -1,6 +1,6 @@
 {
   "name": "inf-load",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "dist/inf-load.cjs.js",
   "module": "dist/inf-load.es.js",
   "files": [
@@ -11,9 +11,21 @@
     "build": "./node_modules/.bin/vite build && tsc --emitDeclarationOnly",
     "build:watch": "./node_modules/.bin/vite build --watch"
   },
-  "author": "Vishnuprasad Oduvathody",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ovpv/inf-load.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ovpv/inf-load/issues"
+  },
+  "homepage": "https://github.com/ovpv/inf-load#readme",
+  "author": "Vishnuprasad O",
   "license": "ISC",
-  "description": "webcomponent for infinite loading",
+  "description": "Web component for infinite loading",
+  "keywords": [
+    "web-component",
+    "javascript"
+  ],
   "devDependencies": {
     "@types/node": "^22.13.0",
     "typescript": "^5.7.3",
